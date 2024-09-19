@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_bg">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:alpha="0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/account_button"
+        android:layout_width="159dp"
+        android:layout_height="66dp"
+        android:background="@drawable/accountbg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/account_name"
+        android:layout_width="159dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:fontFamily="@font/fantasy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/settings_button"
+        android:layout_width="39dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="508dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/settings_button"
+        app:layout_constraintStart_toEndOf="@id/account_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/friends_button"
+        android:layout_width="23dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="76dp"
+        android:backgroundTint="@color/techno"
+        android:alpha="0.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settings_button" />
+
+    <ImageButton
+        android:id="@+id/battle_button"
+        android:layout_width="263dp"
+        android:layout_height="189dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button"
+        android:padding="16dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/account_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="85dp"
+        android:fontFamily="@font/fantasy"
+        android:gravity="center"
+        android:text="Play"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/account_button" />
+
+    <ImageButton
+        android:id="@+id/training_button"
+        android:layout_width="263dp"
+        android:layout_height="189dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button"
+        app:layout_constraintStart_toEndOf="@id/battle_button"
+        app:layout_constraintTop_toBottomOf="@id/account_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="85dp"
+        android:gravity="center"
+        android:text="VS. AI"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/fantasy"
+        app:layout_constraintStart_toEndOf="@id/battle_button"
+        app:layout_constraintTop_toBottomOf="@id/account_button" />
+
+    <Button
+        android:id="@+id/cards_button"
+        android:layout_width="170dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="20dp"
+        android:backgroundTint="@color/techno"
+        android:alpha="0.6"
+        android:text="Cards"
+        android:fontFamily="@font/fantasy"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/store_button"
+        android:layout_width="170dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/techno"
+        android:alpha="0.6"
+        android:text="Store"
+        android:fontFamily="@font/fantasy"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/cards_button"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/data_button"
+        android:layout_width="170dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/techno"
+        android:alpha="0.6"
+        android:text="Data"
+        android:fontFamily="@font/fantasy"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/store_button"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/ir_button"
+        android:layout_width="170dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/techno"
+        android:alpha="0.6"
+        android:text="Infrared"
+        android:fontFamily="@font/fantasy"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/data_button"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

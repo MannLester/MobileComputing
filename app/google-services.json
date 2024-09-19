@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "220041050268",
+    "project_id": "cardsofpower-2d60c",
+    "storage_bucket": "cardsofpower-2d60c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220041050268:android:1bf547ca44f139d5885559",
+        "android_client_info": {
+          "package_name": "com.example.mobilecomputing"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSN8DnEh-2m3pBdngXs8UTgJZgaV9YTDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

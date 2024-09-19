@@ -1,0 +1,158 @@
+<resources>
+    <string name="hello_world">Hello World</string>
+    <string name="subtitle">The Journey</string>
+    <string name="user_form">User Form</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="sex">Sex</string>
+    <string name="email">Email</string>
+    <string name="location">Location</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string-array name="cities_array">
+        <item>City</item>
+        <!--United States Cities-->
+        <item>New York</item>
+        <item>Los Angeles</item>
+        <item>Chicago</item>
+        <item>Houston</item>
+        <item>Phoenix</item>
+        <item>Philadelphia</item>
+        <item>San Antonio</item>
+        <item>San Diego</item>
+        <item>Dallas</item>
+        <item>San Jose</item>
+        <!--Canada-->
+        <item>Toronto</item>
+        <item>Vancouver</item>
+        <item>Montreal</item>
+        <item>Calgary</item>
+        <item>Edmonton</item>
+        <item>Ottawa</item>
+        <item>Quebec City</item>
+        <item>Winnipeg</item>
+        <item>Halifax</item>
+        <item>Victoria</item>
+        <!--United Kingdom-->
+        <item>London</item>
+        <item>Birmingham</item>
+        <item>Manchester</item>
+        <item>Glasgow</item>
+        <item>Liverpool</item>
+        <item>Edinburgh</item>
+        <item>Leeds</item>
+        <item>Bristol</item>
+        <item>Sheffield</item>
+        <item>Leicester</item>
+        <!--Australia-->
+        <item>Sydney</item>
+        <item>Melbourne</item>
+        <item>Brisbane</item>
+        <item>Perth</item>
+        <item>Adelaide</item>
+        <item>Canberra</item>
+        <item>Hobart</item>
+        <item>Darwin</item>
+        <item>Gold Coast</item>
+        <item>Newcastle</item>
+        <!--Germany-->
+        <item>Berlin</item>
+        <item>Hamburg</item>
+        <item>Munich</item>
+        <item>Cologne</item>
+        <item>Frankfurt</item>
+        <item>Stuttgart</item>
+        <item>Dusseldorf</item>
+        <item>Dortmund</item>
+        <item>Essen</item>
+        <item>Leipzig</item>
+        <!--India-->
+        <item>Mumbai</item>
+        <item>Delhi</item>
+        <item>Bangalore</item>
+        <item>Hyderabad</item>
+        <item>Chennai</item>
+        <item>Kolkata</item>
+        <item>Pune</item>
+        <item>Ahmedabad</item>
+        <item>Jaipur</item>
+        <item>Surat</item>
+        <!--Brazil-->
+        <item>Sao Paulo</item>
+        <item>Rio de Janeiro</item>
+        <item>Brasilia</item>
+        <item>Salvador</item>
+        <item>Fortaleza</item>
+        <item>Belo Horizonte</item>
+        <item>Curitiba</item>
+        <item>Manaus</item>
+        <item>Recife</item>
+        <item>Porto Alegre</item>
+        <!--Japan-->
+        <item>Tokyo</item>
+        <item>Yokohama</item>
+        <item>Osaka</item>
+        <item>Nagoya</item>
+        <item>Sapporo</item>
+        <item>Fukuoka</item>
+        <item>Kyoto</item>
+        <item>Kobe</item>
+        <item>Hiroshima</item>
+        <item>Sendai</item>
+        <!--South Africa-->
+        <item>Johannesburg</item>
+        <item>Cape Town</item>
+        <item>Durban</item>
+        <item>Pretoria</item>
+        <item>Port Elizabeth</item>
+        <item>Bloemfontein</item>
+        <item>East London</item>
+        <item>Pietermaritzburg</item>
+        <item>Kimberly</item>
+        <item>Polokwane</item>
+        <!--Philippines-->
+        <item>Manila</item>
+        <item>Quezon City</item>
+        <item>Cebu City</item>
+        <item>Davao City</item>
+        <item>Bacolod</item>
+        <item>Iloilo City</item>
+        <item>Cagayan de Oro</item>
+        <item>Zamboanga City</item>
+        <item>Batangas</item>
+        <item>Baguio</item>
+    </string-array>
+
+    <string-array name="countries_array">
+        <item>Country</item>
+        <item>United States</item>
+        <item>Canada</item>
+        <item>United Kingdom</item>
+        <item>Australia</item>
+        <item>Germany</item>
+        <item>India</item>
+        <item>Brazil</item>
+        <item>Japan</item>
+        <item>South Africa</item>
+        <item>Philippines</item>
+    </string-array>
+    <string-array name="gender_array">
+        <item>Sex</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string name="app_name">Cards</string>
+    <string name="c">C</string>
+    <string name="a">A</string>
+    <string name="r">R</string>
+    <string name="d">D</string>
+    <string name="s">S</string>
+    <string name="ofPower">of Power</string>
+    <string name="pressToStart">Press to Start</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+</resources>
