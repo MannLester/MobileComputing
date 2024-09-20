@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -276,6 +277,8 @@ public class SignupActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentReference> task) {
                                             if (task.isSuccessful()) {
+                                                String userId = task.getResult().getId(); // Get the newly created user's ID
+
                                                 Map<String, Object> account = new HashMap<>();
                                                 account.put("username", username);
                                                 account.put("password", password);
@@ -288,19 +291,53 @@ public class SignupActivity extends AppCompatActivity {
                                                             @Override
                                                             public void onComplete(@NonNull Task<DocumentReference> accountTask) {
                                                                 if (accountTask.isSuccessful()) {
-                                                                    Toast.makeText(SignupActivity.this, "User registered and account saved!", Toast.LENGTH_SHORT).show();
-                                                                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                                                                    startActivity(intent);
+                                                                    // Fetch 10 random cards from the "cards" collection
+                                                                    db.collection("cards")
+                                                                            .whereEqualTo("isOwned", false)
+                                                                            .limit(10) // Get 10 cards that are not owned
+                                                                            .get()
+                                                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                                @Override
+                                                                                public void onComplete(@NonNull Task<QuerySnapshot> cardTask) {
+                                                                                    if (cardTask.isSuccessful()) {
+                                                                                        for (DocumentSnapshot card : cardTask.getResult()) {
+                                                                                            // Update each card's isOwned and ownerId fields
+                                                                                            db.collection("cards").document(card.getId())
+                                                                                                    .update("isOwned", true, "ownerId", userId)
+                                                                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                                        @Override
+                                                                                                        public void onComplete(@NonNull Task<Void> updateTask) {
+                                                                                                            if (updateTask.isSuccessful()) {
+                                                                                                                // Successfully assigned card to user
+                                                                                                            } else {
+                                                                                                                Toast.makeText(SignupActivity.this, "Failed to assign card.", Toast.LENGTH_SHORT).show();
+                                                                                                            }
+                                                                                                        }
+                                                                                                    });
+                                                                                        }
+
+                                                                                        // After assigning cards, proceed to next activity
+                                                                                        Toast.makeText(SignupActivity.this, "User registered, account saved, and cards assigned!", Toast.LENGTH_SHORT).show();
+                                                                                        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                                                                                        startActivity(intent);
+
+                                                                                    } else {
+                                                                                        Toast.makeText(SignupActivity.this, "Failed to fetch cards.", Toast.LENGTH_SHORT).show();
+                                                                                    }
+                                                                                }
+                                                                            });
+
                                                                 } else {
-                                                                    Toast.makeText(SignupActivity.this, "Registration failed: " + accountTask.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                                    Toast.makeText(SignupActivity.this, "Failed to save account.", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             }
                                                         });
                                             } else {
-                                                Toast.makeText(SignupActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(SignupActivity.this, "User registration failed.", Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });
+
                         }
                     }
                 });
