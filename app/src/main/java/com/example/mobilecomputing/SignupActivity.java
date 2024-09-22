@@ -277,13 +277,12 @@ public class SignupActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentReference> task) {
                                             if (task.isSuccessful()) {
-                                                String userId = task.getResult().getId(); // Get the newly created user's ID
-
                                                 Map<String, Object> account = new HashMap<>();
                                                 account.put("username", username);
                                                 account.put("password", password);
                                                 account.put("cardCount", 0);
                                                 account.put("newPlayer", true);
+                                                account.put("loggedIn", false);
 
                                                 db.collection("accounts")
                                                         .add(account)
@@ -291,6 +290,7 @@ public class SignupActivity extends AppCompatActivity {
                                                             @Override
                                                             public void onComplete(@NonNull Task<DocumentReference> accountTask) {
                                                                 if (accountTask.isSuccessful()) {
+                                                                    String userId = accountTask.getResult().getId();
                                                                     // Fetch 10 random cards from the "cards" collection
                                                                     db.collection("cards")
                                                                             .whereEqualTo("isOwned", false)
