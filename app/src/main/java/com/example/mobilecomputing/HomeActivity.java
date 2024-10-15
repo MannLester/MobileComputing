@@ -2,13 +2,18 @@ package com.example.mobilecomputing;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.ImageFormat;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageView;
 import android.content.Intent;
+import android.util.Log;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -18,71 +23,111 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class HomeActivity extends AppCompatActivity {
     private FirebaseFirestore db;
-    ImageButton accountButton, playButton;
-    Button cardsButton;
-    TextView accountName;
+
+    private TextView playerName;
+    private ImageView background, darkBackground;
+    private ImageButton mode_light, mode_dark, inventoryButton, shopButton, workshopButton;
+    private ImageButton calculator, infrared;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        accountButton = findViewById(R.id.account_button);
-        playButton = findViewById(R.id.battle_button);
-        cardsButton = findViewById(R.id.cards_button);
-        accountName = findViewById(R.id.account_name);
-        // Initialize Firestore
         db = FirebaseFirestore.getInstance();
 
-        // Query Firestore for a document where loggedIn == true
+        playerName = findViewById(R.id.player_name);
+        background = findViewById(R.id.background);
+        darkBackground = findViewById(R.id.background_dark);
+        mode_light = findViewById(R.id.modes_light);
+        mode_dark = findViewById(R.id.modes_dark);
+        inventoryButton = findViewById(R.id.button1);
+        shopButton = findViewById(R.id.button2);
+        workshopButton = findViewById(R.id.button3);
+        calculator = findViewById(R.id.calculator);
+        infrared = findViewById(R.id.infrared);
+
+        calculator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, CalculatorActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        inventoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, InventoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        shopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, ShopActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        workshopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, WorkshopActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mode_light.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                darkBackground.setVisibility(View.VISIBLE);
+                mode_dark.setVisibility(View.VISIBLE);
+                background.setVisibility(View.INVISIBLE);
+                mode_light.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        mode_dark.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                background.setVisibility(View.VISIBLE);
+                mode_light.setVisibility(View.VISIBLE);
+                darkBackground.setVisibility(View.INVISIBLE);
+                mode_dark.setVisibility(View.INVISIBLE);
+            }
+        });
+        getLoggedInUser();
+    }
+
+    private void getLoggedInUser() {
         db.collection("accounts")
                 .whereEqualTo("loggedIn", true)
-                .limit(1) // You can limit to 1 since we expect only one user to be logged in at a time
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            // Check if the query returned a result
-                            if (!task.getResult().isEmpty()) {
-                                // Loop through the documents and get the username of the logged-in user
-                                for (DocumentSnapshot document : task.getResult()) {
-                                    String username = document.getString("username");
-                                    // Set the button text to the logged-in username
-                                    accountName.setText(username);
+                        if(task.isSuccessful()){
+                            QuerySnapshot querySnapshot = task.getResult();
+
+                            if(!querySnapshot.isEmpty()){
+                                DocumentSnapshot document = querySnapshot.getDocuments().get(0);
+                                String username = document.getString("username");
+
+                                if(username !=  null){
+                                    playerName.setText(username);
+                                }else{
+                                    Toast.makeText(HomeActivity.this, " Username not Found", Toast.LENGTH_SHORT).show();
                                 }
-                            } else {
-                                Toast.makeText(HomeActivity.this, "No logged-in user found", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(HomeActivity.this, "No LoggedIn Users Found", Toast.LENGTH_SHORT).show();
                             }
-                        } else {
-                            // Handle failure
-                            Toast.makeText(HomeActivity.this, "Error fetching data", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Log.e("HomeActivity", "Error getting documents: ", task.getException());
+                            Toast.makeText(HomeActivity.this, "Error Occurred. Try Again", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
-        accountButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, BattleActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        cardsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, CardsActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

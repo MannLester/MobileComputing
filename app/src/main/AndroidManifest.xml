@@ -33,20 +33,32 @@
 
         <activity
             android:name=".HomeActivity"
-            android:exported="true"
-            android:screenOrientation="landscape">
-        </activity>
-
-        <activity
-            android:name=".BattleActivity"
-            android:exported="true"
-            android:screenOrientation="landscape">
+            android:exported="true">
         </activity>
 
         <activity
             android:name=".CardsActivity"
-            android:exported="true"
-            android:screenOrientation="landscape">
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".CalculatorActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".InventoryActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".ShopActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".WorkshopActivity"
+            android:exported="true">
         </activity>
 
     </application>

@@ -155,4 +155,8 @@
     <string name="pressToStart">Press to Start</string>
     <string name="login">Login</string>
     <string name="signup">Sign Up</string>
+    <string name="forgor"><u>Forgot Password</u></string>
+    <string name="inventory">Inventory</string>
+    <string name="shop">Shop</string>
+    <string name="create">Workshop</string>
 </resources>
