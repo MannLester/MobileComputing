@@ -114,9 +114,15 @@ public class HomeActivity extends AppCompatActivity {
                             if(!querySnapshot.isEmpty()){
                                 DocumentSnapshot document = querySnapshot.getDocuments().get(0);
                                 String username = document.getString("username");
-
+                                String documentId = document.getId();
                                 if(username !=  null){
                                     playerName.setText(username);
+
+                                    inventoryButton.setOnClickListener(view -> {
+                                        Intent intent = new Intent(HomeActivity.this, InventoryActivity.class);
+                                        intent.putExtra("documentId", documentId);
+                                        startActivity(intent);
+                                    });
                                 }else{
                                     Toast.makeText(HomeActivity.this, " Username not Found", Toast.LENGTH_SHORT).show();
                                 }
