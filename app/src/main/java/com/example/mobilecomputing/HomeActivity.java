@@ -123,6 +123,12 @@ public class HomeActivity extends AppCompatActivity {
                                         intent.putExtra("documentId", documentId);
                                         startActivity(intent);
                                     });
+
+                                    shopButton.setOnClickListener(view -> {
+                                        Intent intent = new Intent(HomeActivity.this, ShopActivity.class);
+                                        intent.putExtra("documentId", documentId);
+                                        startActivity(intent);
+                                    });
                                 }else{
                                     Toast.makeText(HomeActivity.this, " Username not Found", Toast.LENGTH_SHORT).show();
                                 }
