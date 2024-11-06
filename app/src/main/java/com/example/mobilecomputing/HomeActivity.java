@@ -55,6 +55,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        infrared.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, InfraredActivity.class);
+                startActivity(intent);
+            }
+        });
+
         inventoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
